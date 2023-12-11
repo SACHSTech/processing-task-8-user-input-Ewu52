@@ -1,14 +1,14 @@
 import processing.core.PApplet;
+import java.util.Random;
+import processing.core.PImage;
 
 public class Sketch extends PApplet {
-	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+  PImage imgGTO;
+
+
   public void settings() {
 	// put your size call here
-    size(400, 400);
+    size(1200, 800);
   }
 
   /** 
@@ -17,20 +17,30 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(210, 255, 173);
+    imgGTO = loadImage("gto vice principal.jpg");
   }
 
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
-
-    stroke(255);
-    line(50, 125, 70, 50);  
+	
   }
   
-  // define other methods down here.
+  public void mouseMoved(){
+    imgGTO.resize(300,300); 
+    image(imgGTO, mouseX, mouseY);
+  }
+
+  public void keyPressed(){
+    if (key == 32){
+    Random rand = new Random();
+    int upperbound = 256;
+    int r = rand.nextInt(upperbound);
+    int g = rand.nextInt(upperbound);
+    int b = rand.nextInt(upperbound);
+    background(r, g, b);
+    }
+  }
+
 }
